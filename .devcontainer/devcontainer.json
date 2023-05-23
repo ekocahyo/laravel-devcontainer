@@ -1,0 +1,35 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/php
+{
+	"name": "Laravel",
+	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+	"dockerComposeFile": "../docker-compose.yml",
+	"service": "laravel",
+	"workspaceFolder": "/var/www/html",
+
+	// Features to add to the dev container. More info: https://containers.dev/features.
+	// "features": {},
+
+    "mounts": [
+			"source=${localEnv:HOME}/.aws,target=/home/sail/.aws,type=bind,consistency=cached"
+    ],
+
+	// Configure tool-specific properties.
+	"customizations": {
+		// Configure properties specific to VS Code.
+		"vscode": {
+			"settings": {},
+			"extensions": [
+				"streetsidesoftware.code-spell-checker",
+				"onecentlin.laravel-extension-pack",
+                "amazonwebservices.aws-toolkit-vscode"
+			]
+		}
+	},
+
+	// Use 'postCreateCommand' to run commands after the container is created.
+	"postCreateCommand": "bash -i .devcontainer/postCreateCommand.sh",
+
+	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+	"remoteUser": "sail"
+}
